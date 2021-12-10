@@ -1,4 +1,4 @@
-use advent_2021::read_lines;
+use advent_2021::*;
 
 #[test]
 fn example_one() {
@@ -44,19 +44,8 @@ fn least_common(input: &[String], pos: usize) -> u8 {
     }
 }
 
-fn read_input_file(filename: &str) -> Vec<String> {
-    if let Ok(lines) = read_lines(filename) {
-        lines
-            // Skip read errors
-            .filter_map(|x| x.ok())
-            .collect()
-    } else {
-        Vec::new()
-    }
-}
-
 fn main() {
-    let input = read_input_file("./input/day_3.txt");
+    let input = input_lines("./input/day_3.txt").unwrap();
     // part 1
     {
         let most_common_1: Vec<u8> = (0..12).map(|i| most_common(&input, i)).collect();

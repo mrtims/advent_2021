@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use itertools::Itertools;
 
-use advent_2021::read_lines;
+use advent_2021::*;
 
 const ZERO: &str = "abcefg";
 const ONE: &str = "cf";
@@ -191,19 +191,8 @@ fn concatenate_digits(digits: &[u32]) -> u32 {
     digits.iter().fold(0, |sum, n| sum * 10 + n)
 }
 
-fn read_input_file(filename: &str) -> Vec<String> {
-    if let Ok(lines) = read_lines(filename) {
-        lines
-            // Skip read errors
-            .filter_map(|x| x.ok())
-            .collect()
-    } else {
-        Vec::new()
-    }
-}
-
 fn main() {
-    let input = read_input_file("input/day_8.txt");
+    let input = input_lines("input/day_8.txt").unwrap();
     // part 1
     {
         let sum = count_unique(&outputs(&input));

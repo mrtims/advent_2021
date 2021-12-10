@@ -1,4 +1,4 @@
-use advent_2021::read_lines;
+use advent_2021::*;
 
 #[test]
 fn example() {
@@ -23,20 +23,8 @@ fn count_2(points: &[i32]) -> usize {
         .count()
 }
 
-fn read_input_file(filename: &str) -> Vec<i32> {
-    if let Ok(lines) = read_lines(filename) {
-        lines
-            // Skip read and parse errors
-            .filter_map(|x| x.ok().map(|x| str::parse::<i32>(&x).ok()))
-            .flatten()
-            .collect()
-    } else {
-        Vec::new()
-    }
-}
-
 fn main() {
-    let data = read_input_file("./input/day_1.txt");
+    let data = input_as_1d("./input/day_1.txt");
     println!("#1 Count is {}", count(&data));
     println!("#2 Count is {}", count_2(&data));
 }

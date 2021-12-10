@@ -1,4 +1,4 @@
-use advent_2021::read_lines;
+use advent_2021::*;
 
 #[test]
 fn example_1() {
@@ -25,24 +25,8 @@ fn cost_2(n: i32, crabs: &[i32]) -> i32 {
         .sum()
 }
 
-fn read_input_file(filename: &str) -> Vec<i32> {
-    if let Ok(lines) = read_lines(filename) {
-        let first: String = lines
-            .take(1)
-            .filter_map(|x| x.ok())
-            .collect::<Vec<String>>()[0]
-            .clone();
-        first
-            .split(',')
-            .filter_map(|n| str::parse::<i32>(n).ok())
-            .collect()
-    } else {
-        Vec::new()
-    }
-}
-
 fn main() {
-    let crabs = read_input_file("input/day_7.txt");
+    let crabs = input_as_csv("input/day_7.txt");
     let min = crabs.iter().min().unwrap();
     let max = crabs.iter().max().unwrap();
     // part 1:

@@ -1,4 +1,4 @@
-use advent_2021::read_lines;
+use advent_2021::*;
 
 enum Direction {
     Forward(i32),
@@ -66,20 +66,16 @@ fn parse(s: String) -> Direction {
     }
 }
 
-fn read_input_file(filename: &str) -> Vec<Direction> {
-    if let Ok(lines) = read_lines(filename) {
-        lines
-            // Skip read errors
-            .filter_map(|x| x.ok())
-            .map(parse)
-            .collect()
+fn input_as_direction(filename: &str) -> Vec<Direction> {
+    if let Ok(lines) = input_lines(filename) {
+        lines.into_iter().map(parse).collect()
     } else {
         Vec::new()
     }
 }
 
 fn main() {
-    let directions = read_input_file("./input/day_2.txt");
+    let directions = input_as_direction("./input/day_2.txt");
     let position = follow_path_1(&directions);
     println!(
         "Final #1:{:?}, multiple:{}",

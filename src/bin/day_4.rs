@@ -1,4 +1,4 @@
-use advent_2021::read_lines;
+use advent_2021::*;
 
 #[derive(Debug, Clone, Copy)]
 enum Cell {
@@ -93,29 +93,11 @@ fn calculate_score(board: Board, last_call: u8) -> u32 {
     sum_of_unmarked * last_call as u32
 }
 
-fn read_input_calls(filename: &str) -> Vec<u8> {
-    if let Ok(lines) = read_lines(filename) {
-        let mut calls = Vec::new();
-        for line in lines.flatten() {
-            let ns = line.split(',');
-            for n in ns {
-                if let Ok(call) = str::parse::<u8>(n) {
-                    calls.push(call);
-                }
-            }
-        }
-        calls
-    } else {
-        Vec::new()
-    }
-}
-
 fn read_input_boards(filename: &str) -> Vec<Board> {
-    if let Ok(lines) = read_lines(filename) {
+    if let Ok(lines) = input_lines(filename) {
         let mut boards = Vec::new();
-        let data: Vec<String> = lines.filter_map(|x| x.ok()).collect();
         let parse = |n| str::parse::<u8>(n).ok().map(Cell::Unmarked);
-        for board in data.chunks(DIM + 1) {
+        for board in lines.chunks(DIM + 1) {
             boards.push(
                 vec![
                     board[0]
@@ -166,7 +148,7 @@ fn is_same(first: &Board, second: &Board) -> bool {
 }
 
 fn main() {
-    let calls = read_input_calls("./input/day_4_calls.txt");
+    let calls = input_as_csv("./input/day_4_calls.txt");
     let boards = read_input_boards("./input/day_4_boards.txt");
 
     // part 1

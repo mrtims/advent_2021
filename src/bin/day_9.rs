@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 
-use advent_2021::read_lines;
+use advent_2021::*;
 
 #[test]
 fn example_one() {
@@ -186,19 +186,9 @@ fn points_down(input: &[Vec<u32>], x: usize, mut y: usize, height: usize) -> Vec
     result
 }
 
-fn read_input_file(filename: &str) -> Vec<String> {
-    if let Ok(lines) = read_lines(filename) {
-        lines
-            // Skip read errors
-            .filter_map(|x| x.ok())
-            .collect()
-    } else {
-        Vec::new()
-    }
-}
-
 fn main() {
-    let input: Vec<Vec<u32>> = read_input_file("./input/day_9.txt")
+    let input: Vec<Vec<u32>> = input_lines("./input/day_9.txt")
+        .unwrap()
         .iter()
         .map(|x| {
             x.chars()

@@ -11,7 +11,7 @@ These will be uploaded soon after completion, which will be nowhere near to gett
 The rules I have set myself (and may break at any time) are:
 - The program output does not need to be the complete answer (it may require manual post-processing)
 - The program input does not need to be unmodified from the provided input (it may be manually pre-processed)
-- Use only the Rust standard library (no external crates)
+- Use only the Rust standard library (no external crates) except itertools (see next...)
 - Use as many iterators and iterator functions as possible
-- Only add functions to lib.rs during the completion of a puzzle (no prep-work)
+- Only add functions to lib.rs during the completion of a puzzle (no prep-work) or tidying up existing puzzles
 - The first commit for each day will be representative of a first-cut. A little clean-up and running clippy is allowed to protect my reputation, but no refactoring once the clock stops

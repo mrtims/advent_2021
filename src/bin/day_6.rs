@@ -1,4 +1,4 @@
-use advent_2021::read_lines;
+use advent_2021::*;
 
 #[test]
 fn example_1() {
@@ -68,13 +68,10 @@ fn step_2(fish: FishCount) -> FishCount {
 }
 
 fn read_input_file(filename: &str) -> Vec<i64> {
-    if let Ok(lines) = read_lines(filename) {
-        let first: String = lines
-            .take(1)
-            .filter_map(|x| x.ok())
-            .collect::<Vec<String>>()[0]
-            .clone();
-        first
+    if let Ok(lines) = input_lines(filename) {
+        lines
+            .first()
+            .unwrap()
             .split(',')
             .filter_map(|n| str::parse::<i64>(n).ok())
             .collect()

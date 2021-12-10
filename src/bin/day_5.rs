@@ -1,4 +1,4 @@
-use advent_2021::read_lines;
+use advent_2021::*;
 use std::cmp::{max, min};
 use std::collections::HashMap;
 
@@ -190,16 +190,8 @@ fn example_two() {
     assert_eq!(12, two_or_more);
 }
 
-fn read_input(filename: &str) -> Vec<String> {
-    if let Ok(lines) = read_lines(filename) {
-        lines.filter_map(|x| x.ok()).collect()
-    } else {
-        Vec::new()
-    }
-}
-
 fn main() {
-    let input = read_input("./input/day_5.txt");
+    let input = input_lines("./input/day_5.txt").unwrap();
     let mut lines: Vec<Line> = Vec::new();
     for line in input {
         if let Some((a, b)) = line.split_once(" -> ") {
