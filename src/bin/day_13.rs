@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 
 use advent_2021::*;
+use colored::*;
 use itertools::Itertools;
 
 type Paper = HashMap<(usize, usize), bool>;
@@ -102,14 +103,14 @@ fn fold_paper(paper: &mut Paper, fold: Fold) {
 fn parse_point(input: &str) -> (usize, usize) {
     input
         .split(',')
-        .filter_map(|x| str::parse::<usize>(&x).ok())
+        .filter_map(|x| x.parse::<usize>().ok())
         .collect_tuple()
         .unwrap()
 }
 
 fn parse_paper(input: &[String]) -> Paper {
     let mut paper: Paper = HashMap::new();
-    for point in input.iter().map(|line| parse_point(&line)) {
+    for point in input.iter().map(|line| parse_point(line)) {
         paper.insert(point, true);
     }
     paper
@@ -133,9 +134,9 @@ fn print(paper: &Paper, width: usize, height: usize) {
     for y in 0..height {
         for x in 0..width {
             if paper.contains_key(&(x, y)) {
-                print!("#")
+                print!("{}", "  ".on_white());
             } else {
-                print!("_")
+                print!("  ");
             }
         }
         print!("\n");

@@ -182,7 +182,7 @@ fn main() {
         let incomplete = incomplete_lines(&input);
         let owing: Vec<Vec<char>> = incomplete.into_iter().map(|x| owing(&x)).collect();
         let mut points: Vec<_> = owing.iter().map(points_per_line).collect();
-        points.sort();
+        points.sort_unstable();
         println!("#2: {:?}", points[(points.len() / 2)]);
     }
 }
