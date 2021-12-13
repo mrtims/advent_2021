@@ -67,7 +67,7 @@ fn parse(s: String) -> Direction {
 }
 
 fn input_as_direction(filename: &str) -> Vec<Direction> {
-    if let Ok(lines) = input_lines(filename) {
+    if let Ok(lines) = input::lines(filename) {
         lines.into_iter().map(parse).collect()
     } else {
         Vec::new()

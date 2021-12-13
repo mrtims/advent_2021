@@ -192,7 +192,7 @@ fn concatenate_digits(digits: &[u32]) -> u32 {
 }
 
 fn main() {
-    let input = input_lines("input/day_8.txt").unwrap();
+    let input = input::lines("input/day_8.txt").unwrap();
     // part 1
     {
         let sum = count_unique(&outputs(&input));

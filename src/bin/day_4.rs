@@ -94,7 +94,7 @@ fn calculate_score(board: Board, last_call: u8) -> u32 {
 }
 
 fn read_input_boards(filename: &str) -> Vec<Board> {
-    if let Ok(lines) = input_lines(filename) {
+    if let Ok(lines) = input::lines(filename) {
         let mut boards = Vec::new();
         let parse = |n| str::parse::<u8>(n).ok().map(Cell::Unmarked);
         for board in lines.chunks(DIM + 1) {
@@ -148,7 +148,7 @@ fn is_same(first: &Board, second: &Board) -> bool {
 }
 
 fn main() {
-    let calls = input_as_csv("./input/day_4_calls.txt");
+    let calls = input::as_csv("./input/day_4_calls.txt");
     let boards = read_input_boards("./input/day_4_boards.txt");
 
     // part 1

@@ -68,7 +68,7 @@ fn step_2(fish: FishCount) -> FishCount {
 }
 
 fn read_input_file(filename: &str) -> Vec<i64> {
-    if let Ok(lines) = input_lines(filename) {
+    if let Ok(lines) = input::lines(filename) {
         lines
             .first()
             .unwrap()

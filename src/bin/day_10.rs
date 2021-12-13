@@ -96,7 +96,7 @@ fn example_2() {
 
     let owing: Vec<Vec<char>> = incomplete.into_iter().map(|x| owing(&x)).collect();
     let mut points: Vec<_> = owing.iter().map(points_per_line).collect();
-    points.sort();
+    points.sort_unstable();
     println!("{:?}", points);
 }
 
@@ -169,7 +169,7 @@ fn points_per_line(line: &Vec<char>) -> u64 {
 }
 
 fn main() {
-    let input = input_lines("./input/day_10.txt").unwrap();
+    let input = input::lines("./input/day_10.txt").unwrap();
     // part 1:
     {
         let x = get_illegal(&input);

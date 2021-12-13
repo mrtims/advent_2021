@@ -24,7 +24,7 @@ fn count_2(points: &[i32]) -> usize {
 }
 
 fn main() {
-    let data = input_as_1d("./input/day_1.txt");
+    let data = input::as_1d("./input/day_1.txt");
     println!("#1 Count is {}", count(&data));
     println!("#2 Count is {}", count_2(&data));
 }

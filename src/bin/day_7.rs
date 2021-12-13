@@ -26,7 +26,7 @@ fn cost_2(n: i32, crabs: &[i32]) -> i32 {
 }
 
 fn main() {
-    let crabs = input_as_csv("input/day_7.txt");
+    let crabs = input::as_csv("input/day_7.txt");
     let min = crabs.iter().min().unwrap();
     let max = crabs.iter().max().unwrap();
     // part 1:

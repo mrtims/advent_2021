@@ -45,7 +45,7 @@ fn least_common(input: &[String], pos: usize) -> u8 {
 }
 
 fn main() {
-    let input = input_lines("./input/day_3.txt").unwrap();
+    let input = input::lines("./input/day_3.txt").unwrap();
     // part 1
     {
         let most_common_1: Vec<u8> = (0..12).map(|i| most_common(&input, i)).collect();

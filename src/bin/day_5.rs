@@ -191,7 +191,7 @@ fn example_two() {
 }
 
 fn main() {
-    let input = input_lines("./input/day_5.txt").unwrap();
+    let input = input::lines("./input/day_5.txt").unwrap();
     let mut lines: Vec<Line> = Vec::new();
     for line in input {
         if let Some((a, b)) = line.split_once(" -> ") {
