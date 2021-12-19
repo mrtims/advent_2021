@@ -108,7 +108,7 @@ fn parse(input: &[String]) -> Vec<Vec<u32>> {
 }
 
 fn main() {
-    let input = input_lines("./input/day_11.txt").unwrap();
+    let input = input::lines("./input/day_11.txt").unwrap();
 
     // part 1:
     {
