@@ -27,7 +27,7 @@ enum Payload {
     Product(Args),
     Minimum(Args),
     Maximum(Args),
-    Literal(u32),
+    Literal(u64),
     GreaterThan(Args),
     LessThan(Args),
     EqualTo(Args),
@@ -53,7 +53,7 @@ impl Payload {
         }
     }
 
-    fn parse_literal(data: &mut BitVec) -> Option<u32> {
+    fn parse_literal(data: &mut BitVec) -> Option<u64> {
         let mut is_more = decode_front(data, 1)?;
         let mut result = decode_front(data, 4)?;
         while is_more == 0b1 {
@@ -139,10 +139,12 @@ impl Iterator for Decoder<'_> {
     }
 }
 
-fn decode_front(data: &mut BitVec, bits: usize) -> Option<u32> {
+fn decode_front(data: &mut BitVec, bits: usize) -> Option<u64> {
     if data.len() < bits {
         None
     } else {
+        // Rust won't catch this itself!
+        assert!(bits < 64);
         let mut result = 0;
         for bit in data.drain(0..bits) {
             result = result << 1;
@@ -383,6 +385,15 @@ fn example_14() {
 #[test]
 fn example_15() {
     let mut data = parse_string("9C0141080250320F1802104A08");
+    let mut decoder = Decoder::new(&mut data);
+    let result = process(decoder.next().unwrap());
+    assert_eq!(1, result);
+}
+
+#[test]
+fn example_16() {
+    let mut data =
+        parse_string("3600888023024c01150044c0118330a440118330e44011833085c0118522008c29870");
     let mut decoder = Decoder::new(&mut data);
     let result = process(decoder.next().unwrap());
     assert_eq!(1, result);
